@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Genarator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+
+    <datalist id="galleryKeywords">
+        <option value="funny" />
+        <option value="politics" />
+        <option value="dogs" />
+        <option value="cute" />
+        <option value="baby" />
+        <option value="tech" />
+        <option value="wierd" />
+        <option value="evil" />
+        <option value="islam" />
+        <option value="king" />
+        <option value="actors" />
+        <option value="seccess" />
+        <option value="serious" />
+        <option value="anima" />
+    </datalist>
+
+    <header class="main-header">
+        <div class="topnav">
+            <h1 data-trans="title">MEMEGEN<span>.</span></h1>
+
+            <div class="topnav-menu">
+                <a class="gallery-btn active" href="#" onclick="onShowGallery()" data-trans="gallery">Gallery</a>
+                <a class="editor-btn" href="#" onclick="onShowEditor()" data-trans="meme-editor">Meme Editor</a>
+                <a class="my-memes-btn" href="#" onclick="onShowMyMemes()" data-trans="my-memes">My Memes</a>
+                <select onchange="onSetLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <span data-trans="menu">MENU</span>
+                <div class="dropdown-content">
+                    <div><a class="gallery-btn active" href="#" onclick="onShowGallery()"
+                            data-trans="gallery">Gallery</a></div>
+                    <div><a class="editor-btn" href="#" onclick="onShowEditor()" data-trans="meme-editor">Meme
+                            Editor</a></div>
+                    <div><a class="my-memes-btn" href="#" onclick="onShowMyMemes()" data-trans="my-memes">My Memes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main class="main-section">
+        <section class="gallery-section">
+            <header class="gallery-header">
+                <h1 data-trans="gallery-title">Choose Image!</h1>
+                <input type="text" class="galley-input" placeholder="Search Image" list="galleryKeywords"
+                    oninput="onFilterImgs(this.value)">
+            </header>
+            <div class="gallery-container"></div>
+        </section>
+
+        <section class="editor-section hide">
+            <div class="canvas-container">
+                <canvas id="canvas" ondblclick="canvasDbClicked(event)"></canvas>
+            </div>
+
+            <div class="edit-container">
+                <header class="edit-header">
+                    <h3 data-trans="meme-editor">Meme Editor</h3>
+                </header>
+
+                <div class="item item1">
+                    <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text">
+                    <input class="color-input" oninput="onSetLineColor(this.value)" type="color">
+                    <div class="font-size-btn-container">
+                        <button class="" onclick="onIncreaseFont()"><i class="fa-solid fa-font"></i>+</button>
+                        <button class="" onclick="onDecreaseFont()"><i class="fa-solid fa-font"></i>-</button>
+                    </div>
+
+                </div>
+
+                <div class="item item2">
+                    <button class="" onclick="onNextLine()"><i class="fa-solid fa-arrow-down fa-3x"></i></button>
+                    <button class="" onclick="onPrevLine()"><i class="fa-solid fa-arrow-up fa-3x"></i></button>
+                    <button class="" onclick="onAddLine()"><i class="fa-solid fa-plus fa-3x"></i></button>
+                    <button class="" onclick="onRemoveLine()"><i class="fa-solid fa-trash fa-3x"></i></button>
+                </div>
+
+                <div class="item item3">
+                    <button class="" onclick="onAlignLeft()"><i class="fa-solid fa-align-left fa-2x"></i></button>
+                    <button class="" onclick="onAlignCenter()"><i class="fa-solid fa-align-center fa-2x"></i></button>
+                    <button class="" onclick="onAlignRight()"><i class="fa-solid fa-align-right fa-2x"></i></button>
+                </div>
+
+                <div class="item item4">
+                    <button class="" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk fa-3x"></i></button>
+                    <button class="" onclick="onShareMeme()"><i class="fa-solid fa-share fa-3x"></i></button>
+                </div>
+            </div>
+
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <div class="title" data-trans="share-modal-title">Share!</div>
+                </div>
+                <div class="modal-body">
+                    <p class="share-msg"></p>
+                    <div class="share-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-memes-section hide">
+            <header class="my-memes-header">
+                <h1 data-trans="my-memes-title">Your Saved Memes!</h1>
+            </header>
+            <div class="my-memes-container"></div>
+        </section>
+
+        <div class="user-msg"></div>
+        <div id="overlay"></div>
+
+    </main>
+    <script src="https://kit.fontawesome.com/a2f8cae614.js" crossorigin="anonymous"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/upload.service.js"></script>
+    <script src="js/services/i18n.service.js"></script>
+    <script src="js/contrillers/gallery.controller.js"></script>
+    <script src="js/contrillers/my-memes.controller.js"></script>
+    <script src="js/contrillers/meme.controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
