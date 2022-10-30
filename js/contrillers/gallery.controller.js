@@ -4,6 +4,7 @@ function renderGallery(txt) {
     var imgs
     if (txt === undefined || txt === '') {
         imgs = getImgs()
+
     } else {
         imgs = getImgs()
         const filteredImgs = imgs.filter(img => img.keywords.includes(txt))
@@ -20,9 +21,10 @@ function renderGallery(txt) {
 function onImgSelect(id) {
     setImg(id)
     onShowEditor()
-    gElCanvas.width = 800
-    gElCanvas.height = 800
+    // gElCanvas.width = 800
+    // gElCanvas.height = 800
     addEventListener('resize', resizeCanvas);
+    resizeCanvas()
     renderMeme()
 }
 

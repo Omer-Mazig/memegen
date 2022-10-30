@@ -12,6 +12,8 @@ function renderMyMemes() {
 
 function onEditSavedMeme(id) {
     editSavedMeme(id)
+    // addEventListener('resize', resizeCanvas);
+    // resizeCanvas()
     renderMeme()
     onShowEditor()
 }

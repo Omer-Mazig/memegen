@@ -63,8 +63,6 @@ function drawText(line, x, y, isSelectedLine) {
     }
 }
 
-
-
 function drawTextBorder(line) {
     const { isSelectedLineMark } = getMeme()
     const { pos, txt, align, size } = line

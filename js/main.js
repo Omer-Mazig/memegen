@@ -13,7 +13,6 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     gOverlay = document.getElementById('overlay')
     gElCanvas.height = gElCanvas.width * heightRatio
-    console.log(gCtx);
     addListeners()
     renderGallery()
     renderMyMemes()
@@ -92,12 +91,14 @@ function addTouchListeners() {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     if (window.innerWidth < 1380) {
-        gElCanvas.width = elContainer.offsetWidth
-        gElCanvas.height = gElCanvas.width
-    } else {
         gElCanvas.width = 800
         gElCanvas.height = 800
+    } else {
+        gElCanvas.width = elContainer.offsetWidth
+        gElCanvas.height = gElCanvas.width
     }
+    // gElCanvas.width = elContainer.offsetWidth
+    // gElCanvas.height = gElCanvas.width
     renderMeme()
 }
 

@@ -65,7 +65,6 @@ function _createLine() {
 
 function hideTextBorder() {
     gMeme.isSelectedLineMark = false
-    console.log(false);
 }
 
 function showTextBorder() {
@@ -75,7 +74,9 @@ function showTextBorder() {
 
 function editSavedMeme(id) {
     const meme = gSavedMemes.find(savedMeme => savedMeme.id === id)
-    gMeme = JSON.parse(JSON.stringify(meme))
+    // gMeme = JSON.parse(JSON.stringify(meme))
+    meme.isSelectedLineMark = true
+    gMeme = meme
 }
 
 function getSavedMemes() {

@@ -28,8 +28,8 @@
         <option value="anima" />
     </datalist>
 
-    <header class="main-header">
-        <div class="topnav">
+    <header class="main-header full">
+        <div class="topnav main-layout">
             <h1 data-trans="title">MEMEGEN<span>.</span></h1>
 
             <div class="topnav-menu">
@@ -56,17 +56,16 @@
         </div>
 
     </header>
-    <main class="main-section">
+    <main class="main-section main-layout">
         <section class="gallery-section">
             <header class="gallery-header">
-                <h1 data-trans="gallery-title">Choose Image!</h1>
                 <input type="text" class="galley-input" placeholder="Search Image" list="galleryKeywords"
                     oninput="onFilterImgs(this.value)">
             </header>
             <div class="gallery-container"></div>
         </section>
 
-        <section class="main-layout editor-section hide">
+        <section class="editor-section hide">
             <div class="canvas-container">
                 <canvas id="canvas" ondblclick="canvasDbClicked(event)"></canvas>
             </div>
@@ -78,7 +77,11 @@
 
                 <div class="item item1">
                     <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text">
-                    <input class="color-input" oninput="onSetLineColor(this.value)" type="color">
+                    <div class="color-input-container" style="position:relative; display:inline-block">
+                        <button class="color-input-btn"><i class="fa-solid fa-palette"></i></button>
+                        <input class="color-input" oninput="onSetLineColor(this.value)" type="color" value="#ff0000" />
+                    </div>
+                    <!-- <input class="color-input" oninput="onSetLineColor(this.value)" type="color"> -->
                     <div class="font-size-btn-container">
                         <button class="" onclick="onIncreaseFont()"><i class="fa-solid fa-font"></i>+</button>
                         <button class="" onclick="onDecreaseFont()"><i class="fa-solid fa-font"></i>-</button>
