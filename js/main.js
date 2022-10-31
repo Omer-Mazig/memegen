@@ -19,6 +19,7 @@ function onInit() {
 }
 
 function onShowGallery() {
+    document.querySelector('.galley-input').classList.remove('hide')
     document.querySelector('.editor-section').classList.add('hide')
     document.querySelector('.my-memes-section').classList.add('hide')
 
@@ -27,9 +28,11 @@ function onShowGallery() {
 
     document.querySelector('.gallery-section').classList.remove('hide')
     document.querySelector('.gallery-btn').classList.add('active')
+    // resetMeme()
 }
 
 function onShowEditor() {
+    document.querySelector('.galley-input').classList.add('hide')
     document.querySelector('.gallery-section').classList.add('hide')
     document.querySelector('.my-memes-section').classList.add('hide')
 
@@ -38,9 +41,11 @@ function onShowEditor() {
 
     document.querySelector('.editor-section').classList.remove('hide')
     document.querySelector('.editor-btn').classList.add('active')
+    // resetMeme()
 }
 
 function onShowMyMemes() {
+    document.querySelector('.galley-input').classList.add('hide')
     document.querySelector('.editor-section').classList.add('hide')
     document.querySelector('.gallery-section').classList.add('hide')
 
@@ -49,6 +54,7 @@ function onShowMyMemes() {
 
     document.querySelector('.my-memes-section').classList.remove('hide')
     document.querySelector('.my-memes-btn').classList.add('active')
+    // resetMeme()
 }
 
 function onSetLang(lang) {
@@ -60,8 +66,16 @@ function onSetLang(lang) {
 }
 
 function setDirection(lang) {
-    if (lang === 'he') document.body.classList.add('rtl')
-    else document.body.classList.remove('rtl')
+    if (lang === 'he') {
+        document.body.classList.add('rtl')
+        document.querySelector('.top-border').classList.add('rtl')
+        document.querySelector('.content-layout').classList.add('rtl')
+        
+    } else {
+        document.body.classList.remove('rtl')
+        document.querySelector('.top-border').classList.remove('rtl')
+        document.querySelector('.content-layout').classList.remove('rtl')
+    } 
 }
 
 function addListeners() {

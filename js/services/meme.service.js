@@ -25,30 +25,40 @@ var gImgs = [ // need to make function for this
     { id: 18, url: 'img/18.jpg', keywords: ['anima', 'funny'] }
 ]
 
-var gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    isSelectedLineMark: true,
-    lines: [
-        {
-            txt: 'first line',
-            size: 60,
-            align: 'center',
-            color: 'white',
-            isDrag: false,
-            isResize: false,
-            id: makeId()
-        },
-        {
-            txt: 'second line',
-            size: 60,
-            align: 'center',
-            color: 'white',
-            isDrag: false,
-            isResize: false,
-            id: makeId()
-        }
-    ]
+
+
+var gMeme = _creatMeme()
+
+function resetMeme() {
+    gMeme = _creatMeme()
+}
+
+function _creatMeme() {
+    return {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        isSelectedLineMark: true,
+        lines: [
+            {
+                txt: 'First line',
+                size: 60,
+                align: 'center',
+                color: 'white',
+                isDrag: false,
+                isResize: false,
+                id: makeId()
+            },
+            {
+                txt: 'Second line',
+                size: 60,
+                align: 'center',
+                color: 'white',
+                isDrag: false,
+                isResize: false,
+                id: makeId()
+            }
+        ]
+    }
 }
 
 function _createLine() {
@@ -69,7 +79,6 @@ function hideTextBorder() {
 
 function showTextBorder() {
     gMeme.isSelectedLineMark = true
-    console.log(true);
 }
 
 function editSavedMeme(id) {

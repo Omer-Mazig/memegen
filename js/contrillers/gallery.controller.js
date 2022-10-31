@@ -12,7 +12,7 @@ function renderGallery(txt) {
     }
 
     const strHTMLs = imgs.map(({ id }) =>
-        `<div class="gallery-item"><img src="img/${id}.jpg" alt="" id="${id}" class="gallery-img" onclick="onImgSelect(${id})"></div>`)
+        `<div class="gallery-item"><img src="img/${id}.jpg" alt="" id="${id}" class="gallery-img" onclick="onImgSelect(${id})"></div>`) 
 
     const elGallery = document.querySelector('.gallery-container')
     elGallery.innerHTML = strHTMLs.join('')

@@ -30,20 +30,22 @@
 
     <header class="main-header full">
         <div class="topnav main-layout">
-            <h1 data-trans="title">MEMEGEN<span>.</span></h1>
+            <h1>MEMEGEN<span>.</span></h1>
 
             <div class="topnav-menu">
-                <a class="gallery-btn active" href="#" onclick="onShowGallery()" data-trans="gallery">Gallery</a>
-                <a class="editor-btn" href="#" onclick="onShowEditor()" data-trans="meme-editor">Meme Editor</a>
-                <a class="my-memes-btn" href="#" onclick="onShowMyMemes()" data-trans="my-memes">My Memes</a>
-                <select onchange="onSetLang(this.value)">
+                <a class="nav-btn gallery-btn active" href="#" onclick="onShowGallery()" data-trans="gallery">Gallery</a>
+                <input type="text" class="galley-input" placeholder="Search Image" list="galleryKeywords"
+                oninput="onFilterImgs(this.value)">
+                <a class="nav-btn editor-btn" href="#" onclick="onShowEditor()" data-trans="meme-editor">Meme Editor</a>
+                <a class="nav-btn my-memes-btn" href="#" onclick="onShowMyMemes()" data-trans="my-memes">My Memes</a>
+                <select class="nav-btn" onchange="onSetLang(this.value)">
                     <option value="en">English</option>
                     <option value="he">עברית</option>
                 </select>
             </div>
 
             <div class="dropdown">
-                <span data-trans="menu">MENU</span>
+                <span>&#9776;</span>
                 <div class="dropdown-content">
                     <div><a class="gallery-btn active" href="#" onclick="onShowGallery()"
                             data-trans="gallery">Gallery</a></div>
@@ -56,55 +58,58 @@
         </div>
 
     </header>
+    <div class="top-border"></div>
     <main class="main-section main-layout">
-        <section class="gallery-section">
+        <section class="gallery-section content-layout">
             <header class="gallery-header">
-                <input type="text" class="galley-input" placeholder="Search Image" list="galleryKeywords"
-                    oninput="onFilterImgs(this.value)">
+             
             </header>
             <div class="gallery-container"></div>
         </section>
 
-        <section class="editor-section hide">
+        <section class="editor-section content-layout hide">
             <div class="canvas-container">
                 <canvas id="canvas" ondblclick="canvasDbClicked(event)"></canvas>
             </div>
-
+            
             <div class="edit-container">
                 <header class="edit-header">
                     <h3 data-trans="meme-editor">Meme Editor</h3>
                 </header>
-
+                <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text">
+                
                 <div class="item item1">
-                    <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text">
-                    <div class="color-input-container" style="position:relative; display:inline-block">
-                        <button class="color-input-btn"><i class="fa-solid fa-palette"></i></button>
+                   
+                    <!-- <div class="font-size-btn-container"> -->
+                        <button class="" onclick="onIncreaseFont()"><i class="fa-solid fa-font 1x"></i>+</button>
+                        <button class="" onclick="onDecreaseFont()"><i class="fa-solid fa-font 1x"></i>-</button>
+                    <!-- </div> -->
+
+                    <div class="color-input-container">
+                        <button class="color-input-btn"><i class="fa-solid fa-palette fa-1x"></i></button>
                         <input class="color-input" oninput="onSetLineColor(this.value)" type="color" value="#ff0000" />
                     </div>
                     <!-- <input class="color-input" oninput="onSetLineColor(this.value)" type="color"> -->
-                    <div class="font-size-btn-container">
-                        <button class="" onclick="onIncreaseFont()"><i class="fa-solid fa-font"></i>+</button>
-                        <button class="" onclick="onDecreaseFont()"><i class="fa-solid fa-font"></i>-</button>
-                    </div>
 
                 </div>
 
+                
                 <div class="item item2">
-                    <button class="" onclick="onNextLine()"><i class="fa-solid fa-arrow-down fa-3x"></i></button>
-                    <button class="" onclick="onPrevLine()"><i class="fa-solid fa-arrow-up fa-3x"></i></button>
-                    <button class="" onclick="onAddLine()"><i class="fa-solid fa-plus fa-3x"></i></button>
-                    <button class="" onclick="onRemoveLine()"><i class="fa-solid fa-trash fa-3x"></i></button>
+                    <button class="" onclick="onAlignLeft()"><i class="fa-solid fa-align-left fa-1x"></i></button>
+                    <button class="" onclick="onAlignCenter()"><i class="fa-solid fa-align-center fa-1x"></i></button>
+                    <button class="" onclick="onAlignRight()"><i class="fa-solid fa-align-right fa-1x"></i></button>
                 </div>
 
                 <div class="item item3">
-                    <button class="" onclick="onAlignLeft()"><i class="fa-solid fa-align-left fa-2x"></i></button>
-                    <button class="" onclick="onAlignCenter()"><i class="fa-solid fa-align-center fa-2x"></i></button>
-                    <button class="" onclick="onAlignRight()"><i class="fa-solid fa-align-right fa-2x"></i></button>
+                    <button class="" onclick="onNextLine()"><i class="fa-solid fa-arrow-down fa-1x"></i></button>
+                    <button class="" onclick="onPrevLine()"><i class="fa-solid fa-arrow-up fa-1x"></i></button>
+                    <button class="" onclick="onAddLine()"><i class="fa-solid fa-plus fa-1x"></i></button>
+                    <button class="" onclick="onRemoveLine()"><i class="fa-solid fa-trash fa-1x"></i></button>
                 </div>
-
+                
                 <div class="item item4">
-                    <button class="" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk fa-3x"></i></button>
-                    <button class="" onclick="onShareMeme()"><i class="fa-solid fa-share fa-3x"></i></button>
+                    <button class="" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk fa-1x"></i></button>
+                    <button class="" onclick="onShareMeme()"><i class="fa-solid fa-share fa-1x"></i></button>
                 </div>
             </div>
 
@@ -119,9 +124,9 @@
             </div>
         </section>
 
-        <section class="my-memes-section hide">
+        <section class="my-memes-section content-layout hide">
             <header class="my-memes-header">
-                <h1 data-trans="my-memes-title">Your Saved Memes!</h1>
+                <!-- <h1 data-trans="my-memes-title">Your Saved Memes!</h1> -->
             </header>
             <div class="my-memes-container"></div>
         </section>
